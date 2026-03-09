@@ -1,9 +1,369 @@
 <!DOCTYPE html>
-<html>
+<html lang="ru">
 <head>
-  <title>Таролог</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Макс Таролог — Таро, расклады, консультации</title>
+  <meta name="description" content="Профессиональные консультации таролога Макса. Расклады на любовь, карьеру, судьбу. Онлайн и офлайн сессии.">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Raleway:wght@300;400;500&display=swap" rel="stylesheet">
 </head>
 <body>
-  <h1>Привет, мир!</h1>
+
+  <!-- Header -->
+  <header class="header" id="header">
+    <div class="container">
+      <div class="header__inner">
+        <a href="#" class="logo">
+          <span class="logo__symbol">☽</span>
+          <span class="logo__text">MAXTAROTT</span>
+          <span class="logo__symbol">☾</span>
+        </a>
+        <nav class="nav" id="nav">
+          <ul class="nav__list">
+            <li><a href="#about" class="nav__link">Обо мне</a></li>
+            <li><a href="#services" class="nav__link">Услуги</a></li>
+            <li><a href="#how" class="nav__link">Как это работает</a></li>
+            <li><a href="#reviews" class="nav__link">Отзывы</a></li>
+            <li><a href="#contact" class="nav__link nav__link--cta">Записаться</a></li>
+          </ul>
+        </nav>
+        <button class="burger" id="burger" aria-label="Меню">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero__bg"></div>
+    <div class="stars" id="stars"></div>
+    <div class="container">
+      <div class="hero__content">
+        <p class="hero__pretitle">Таролог · Астролог · Нумеролог</p>
+        <h1 class="hero__title">Найди ответы<br>в картах Таро</h1>
+        <p class="hero__subtitle">
+          Раскрою скрытые смыслы твоей ситуации.<br>
+          Помогу принять верное решение и найти свой путь.
+        </p>
+        <div class="hero__actions">
+          <a href="#contact" class="btn btn--primary">Записаться на консультацию</a>
+          <a href="#services" class="btn btn--outline">Узнать об услугах</a>
+        </div>
+        <div class="hero__stats">
+          <div class="stat">
+            <span class="stat__number">500+</span>
+            <span class="stat__label">консультаций</span>
+          </div>
+          <div class="stat__divider"></div>
+          <div class="stat">
+            <span class="stat__number">5 лет</span>
+            <span class="stat__label">практики</span>
+          </div>
+          <div class="stat__divider"></div>
+          <div class="stat">
+            <span class="stat__number">98%</span>
+            <span class="stat__label">довольных клиентов</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="hero__scroll">
+      <span>Листай вниз</span>
+      <div class="hero__scroll-line"></div>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section class="about section" id="about">
+    <div class="container">
+      <div class="about__inner">
+        <div class="about__image">
+          <div class="about__image-wrap">
+            <div class="about__image-placeholder">
+              <span class="about__image-icon">🔮</span>
+            </div>
+            <div class="about__badge">
+              <span class="about__badge-icon">✦</span>
+              <span>Практикующий таролог</span>
+            </div>
+          </div>
+        </div>
+        <div class="about__content">
+          <p class="section__tag">Обо мне</p>
+          <h2 class="section__title">Макс — проводник<br>между вопросом и ответом</h2>
+          <p class="about__text">
+            Я занимаюсь таро более 5 лет. За это время провёл сотни консультаций,
+            помог людям разобраться в сложных жизненных ситуациях, принять важные решения
+            и найти внутренний ресурс.
+          </p>
+          <p class="about__text">
+            Работаю с классическими колодами Таро Уэйта, Марсельским таро и авторскими колодами.
+            Каждый расклад — это индивидуальный разговор, без шаблонов и клише.
+          </p>
+          <ul class="about__list">
+            <li class="about__list-item">
+              <span class="about__check">✦</span>
+              Онлайн и офлайн консультации
+            </li>
+            <li class="about__list-item">
+              <span class="about__check">✦</span>
+              Работа по фото и запросу
+            </li>
+            <li class="about__list-item">
+              <span class="about__check">✦</span>
+              Конфиденциальность гарантирована
+            </li>
+            <li class="about__list-item">
+              <span class="about__check">✦</span>
+              Запись в удобное время
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services -->
+  <section class="services section" id="services">
+    <div class="container">
+      <div class="section__header">
+        <p class="section__tag">Услуги</p>
+        <h2 class="section__title">Что я предлагаю</h2>
+        <p class="section__subtitle">Выбери подходящий формат работы</p>
+      </div>
+      <div class="services__grid">
+
+        <div class="service-card">
+          <div class="service-card__icon">🃏</div>
+          <h3 class="service-card__title">Расклад на вопрос</h3>
+          <p class="service-card__desc">Ответ на конкретный вопрос: любовь, карьера, финансы, здоровье, отношения.</p>
+          <ul class="service-card__list">
+            <li>3–5 карт</li>
+            <li>Письменная расшифровка</li>
+            <li>До 30 минут</li>
+          </ul>
+          <div class="service-card__price">от 1 500 ₽</div>
+          <a href="#contact" class="btn btn--card">Заказать</a>
+        </div>
+
+        <div class="service-card service-card--featured">
+          <div class="service-card__badge">Популярно</div>
+          <div class="service-card__icon">⭐</div>
+          <h3 class="service-card__title">Полная консультация</h3>
+          <p class="service-card__desc">Глубокий анализ ситуации с несколькими раскладами и разбором по всем сферам жизни.</p>
+          <ul class="service-card__list">
+            <li>Несколько раскладов</li>
+            <li>60–90 минут онлайн</li>
+            <li>Запись сессии</li>
+          </ul>
+          <div class="service-card__price">от 3 500 ₽</div>
+          <a href="#contact" class="btn btn--primary">Заказать</a>
+        </div>
+
+        <div class="service-card">
+          <div class="service-card__icon">🌙</div>
+          <h3 class="service-card__title">Годовой прогноз</h3>
+          <p class="service-card__desc">Расклад на 12 месяцев: что ждёт в каждой сфере, ключевые периоды и рекомендации.</p>
+          <ul class="service-card__list">
+            <li>Расклад на год</li>
+            <li>PDF-отчёт</li>
+            <li>Поддержка 30 дней</li>
+          </ul>
+          <div class="service-card__price">от 5 000 ₽</div>
+          <a href="#contact" class="btn btn--card">Заказать</a>
+        </div>
+
+        <div class="service-card">
+          <div class="service-card__icon">💫</div>
+          <h3 class="service-card__title">Обучение таро</h3>
+          <p class="service-card__desc">Индивидуальные уроки для тех, кто хочет научиться читать карты самостоятельно.</p>
+          <ul class="service-card__list">
+            <li>Индивидуальная программа</li>
+            <li>Практические задания</li>
+            <li>Сертификат</li>
+          </ul>
+          <div class="service-card__price">от 2 500 ₽/урок</div>
+          <a href="#contact" class="btn btn--card">Записаться</a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- How it works -->
+  <section class="how section" id="how">
+    <div class="container">
+      <div class="section__header">
+        <p class="section__tag">Процесс</p>
+        <h2 class="section__title">Как это работает</h2>
+      </div>
+      <div class="how__steps">
+        <div class="how__step">
+          <div class="how__step-num">01</div>
+          <div class="how__step-content">
+            <h3>Запишись</h3>
+            <p>Оставь заявку через форму или напиши в мессенджер. Выберем удобное время.</p>
+          </div>
+        </div>
+        <div class="how__arrow">→</div>
+        <div class="how__step">
+          <div class="how__step-num">02</div>
+          <div class="how__step-content">
+            <h3>Сформулируй запрос</h3>
+            <p>Расскажи о своей ситуации и вопросе. Чем точнее запрос — тем глубже расклад.</p>
+          </div>
+        </div>
+        <div class="how__arrow">→</div>
+        <div class="how__step">
+          <div class="how__step-num">03</div>
+          <div class="how__step-content">
+            <h3>Получи ответ</h3>
+            <p>Провожу расклад и детально разбираем карты. Отвечаю на все вопросы.</p>
+          </div>
+        </div>
+        <div class="how__arrow">→</div>
+        <div class="how__step">
+          <div class="how__step-num">04</div>
+          <div class="how__step-content">
+            <h3>Действуй</h3>
+            <p>Получаешь ясность и рекомендации. Ты знаешь, что делать дальше.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Reviews -->
+  <section class="reviews section" id="reviews">
+    <div class="container">
+      <div class="section__header">
+        <p class="section__tag">Отзывы</p>
+        <h2 class="section__title">Что говорят клиенты</h2>
+      </div>
+      <div class="reviews__grid">
+
+        <div class="review-card">
+          <div class="review-card__stars">★★★★★</div>
+          <p class="review-card__text">
+            "Делала расклад на отношения. Макс очень точно описал ситуацию, которую я никому не рассказывала.
+            После консультации всё стало намного понятнее."
+          </p>
+          <div class="review-card__author">
+            <div class="review-card__avatar">А</div>
+            <div>
+              <div class="review-card__name">Анна К.</div>
+              <div class="review-card__date">Февраль 2026</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="review-card">
+          <div class="review-card__stars">★★★★★</div>
+          <p class="review-card__text">
+            "Заказывал годовой прогноз. Прошло уже 4 месяца — многое из того, что было в раскладе,
+            сбылось с точностью до деталей. Рекомендую!"
+          </p>
+          <div class="review-card__author">
+            <div class="review-card__avatar">Д</div>
+            <div>
+              <div class="review-card__name">Дмитрий В.</div>
+              <div class="review-card__date">Январь 2026</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="review-card">
+          <div class="review-card__stars">★★★★★</div>
+          <p class="review-card__text">
+            "Прошла обучение таро у Макса. Очень структурированный подход, всё объясняет доступно.
+            Теперь сама читаю карты для себя и близких."
+          </p>
+          <div class="review-card__author">
+            <div class="review-card__avatar">М</div>
+            <div>
+              <div class="review-card__name">Мария Л.</div>
+              <div class="review-card__date">Декабрь 2025</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section class="contact section" id="contact">
+    <div class="container">
+      <div class="contact__inner">
+        <div class="contact__info">
+          <p class="section__tag">Контакт</p>
+          <h2 class="section__title">Запись<br>на консультацию</h2>
+          <p class="contact__desc">
+            Напиши мне — отвечу в течение пары часов.
+            Обсудим твой запрос и подберём удобное время.
+          </p>
+          <div class="contact__links">
+            <a href="https://t.me/maxtarott" class="contact__link" target="_blank" rel="noopener">
+              <span class="contact__link-icon">✈</span>
+              <span>Telegram: @maxtarott</span>
+            </a>
+            <a href="https://instagram.com/maxtarott" class="contact__link" target="_blank" rel="noopener">
+              <span class="contact__link-icon">◈</span>
+              <span>Instagram: @maxtarott</span>
+            </a>
+          </div>
+        </div>
+        <form class="contact__form" id="contactForm">
+          <div class="form__group">
+            <label class="form__label" for="name">Ваше имя</label>
+            <input class="form__input" type="text" id="name" name="name" placeholder="Как вас зовут?" required>
+          </div>
+          <div class="form__group">
+            <label class="form__label" for="contact-input">Telegram / WhatsApp / Email</label>
+            <input class="form__input" type="text" id="contact-input" name="contact" placeholder="Как с вами связаться?" required>
+          </div>
+          <div class="form__group">
+            <label class="form__label" for="service">Услуга</label>
+            <select class="form__input form__select" id="service" name="service">
+              <option value="">Выберите услугу</option>
+              <option>Расклад на вопрос</option>
+              <option>Полная консультация</option>
+              <option>Годовой прогноз</option>
+              <option>Обучение таро</option>
+            </select>
+          </div>
+          <div class="form__group">
+            <label class="form__label" for="message">Ваш запрос</label>
+            <textarea class="form__input form__textarea" id="message" name="message" placeholder="Опишите вкратце вашу ситуацию или вопрос..."></textarea>
+          </div>
+          <button type="submit" class="btn btn--primary btn--full">Отправить заявку</button>
+          <p class="form__note">Нажимая кнопку, вы соглашаетесь с обработкой персональных данных</p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__inner">
+        <div class="footer__logo">
+          <span class="logo__symbol">☽</span>
+          <span class="logo__text">MAXTAROTT</span>
+          <span class="logo__symbol">☾</span>
+        </div>
+        <p class="footer__copy">© 2026 Maxtarott · Все права защищены</p>
+        <div class="footer__social">
+          <a href="https://t.me/maxtarott" target="_blank" rel="noopener" class="footer__social-link">TG</a>
+          <a href="https://instagram.com/maxtarott" target="_blank" rel="noopener" class="footer__social-link">IG</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
 </body>
 </html>
