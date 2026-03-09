@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Макс Таролог — Таро, расклады, консультации</title>
-  <meta name="description" content="Профессиональные консультации таролога Макса. Расклады на любовь, карьеру, судьбу. Онлайн и офлайн сессии.">
+  <title>Макс Таролог — Таро, расклады, гороскопы</title>
+  <meta name="description" content="Профессиональные консультации таролога Макса. Расклады Таро Уэйта, гороскопы по знакам зодиака, карта дня.">
   <link rel="stylesheet" href="css/style.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Raleway:wght@300;400;500&display=swap" rel="stylesheet">
@@ -23,8 +23,9 @@
         <nav class="nav" id="nav">
           <ul class="nav__list">
             <li><a href="#about" class="nav__link">Обо мне</a></li>
+            <li><a href="#card-of-day" class="nav__link">Карта дня</a></li>
+            <li><a href="#horoscope" class="nav__link">Гороскоп</a></li>
             <li><a href="#services" class="nav__link">Услуги</a></li>
-            <li><a href="#how" class="nav__link">Как это работает</a></li>
             <li><a href="#reviews" class="nav__link">Отзывы</a></li>
             <li><a href="#contact" class="nav__link nav__link--cta">Записаться</a></li>
           </ul>
@@ -38,19 +39,18 @@
 
   <!-- Hero -->
   <section class="hero">
-    <div class="hero__bg"></div>
+    <div class="hero__mist hero__mist--1"></div>
+    <div class="hero__mist hero__mist--2"></div>
+    <div class="hero__mist hero__mist--3"></div>
     <div class="stars" id="stars"></div>
     <div class="container">
       <div class="hero__content">
-        <p class="hero__pretitle">Таролог · Астролог · Нумеролог</p>
-        <h1 class="hero__title">Найди ответы<br>в картах Таро</h1>
-        <p class="hero__subtitle">
-          Раскрою скрытые смыслы твоей ситуации.<br>
-          Помогу принять верное решение и найти свой путь.
-        </p>
-        <div class="hero__actions">
-          <a href="#contact" class="btn btn--primary">Записаться на консультацию</a>
-          <a href="#services" class="btn btn--outline">Узнать об услугах</a>
+        <div class="hero__circle">
+          <div class="hero__circle-inner">
+            <p class="hero__pretitle">Таролог · Астролог · Нумеролог</p>
+            <h1 class="hero__title">Уникальный расклад<br>Таро онлайн</h1>
+            <a href="#contact" class="btn btn--primary hero__cta">Записаться</a>
+          </div>
         </div>
         <div class="hero__stats">
           <div class="stat">
@@ -83,7 +83,15 @@
         <div class="about__image">
           <div class="about__image-wrap">
             <div class="about__image-placeholder">
-              <span class="about__image-icon">🔮</span>
+              <!-- Сюда можно добавить фото: <img src="img/max.jpg" alt="Макс Таролог"> -->
+              <div class="about__image-decor">
+                <span class="about__image-symbol">🔮</span>
+                <div class="about__image-rings">
+                  <div class="ring ring--1"></div>
+                  <div class="ring ring--2"></div>
+                  <div class="ring ring--3"></div>
+                </div>
+              </div>
             </div>
             <div class="about__badge">
               <span class="about__badge-icon">✦</span>
@@ -100,29 +108,184 @@
             и найти внутренний ресурс.
           </p>
           <p class="about__text">
-            Работаю с классическими колодами Таро Уэйта, Марсельским таро и авторскими колодами.
-            Каждый расклад — это индивидуальный разговор, без шаблонов и клише.
+            Работаю с классической колодой Таро Уэйта. Каждый расклад — это индивидуальный
+            разговор, без шаблонов и клише. Я верю, что карты — это зеркало, а не приговор.
           </p>
           <ul class="about__list">
-            <li class="about__list-item">
-              <span class="about__check">✦</span>
-              Онлайн и офлайн консультации
-            </li>
-            <li class="about__list-item">
-              <span class="about__check">✦</span>
-              Работа по фото и запросу
-            </li>
-            <li class="about__list-item">
-              <span class="about__check">✦</span>
-              Конфиденциальность гарантирована
-            </li>
-            <li class="about__list-item">
-              <span class="about__check">✦</span>
-              Запись в удобное время
-            </li>
+            <li class="about__list-item"><span class="about__check">✦</span>Онлайн консультации по всему миру</li>
+            <li class="about__list-item"><span class="about__check">✦</span>Работа по фото и запросу</li>
+            <li class="about__list-item"><span class="about__check">✦</span>Конфиденциальность гарантирована</li>
+            <li class="about__list-item"><span class="about__check">✦</span>Запись в удобное время</li>
           </ul>
         </div>
       </div>
+    </div>
+  </section>
+
+  <!-- Card of the Day -->
+  <section class="cod section" id="card-of-day">
+    <div class="cod__mist"></div>
+    <div class="container">
+      <div class="section__header">
+        <p class="section__tag">Ежедневная практика</p>
+        <h2 class="section__title">Карта дня</h2>
+        <p class="section__subtitle">Карта Таро Уэйта, которая сопровождает тебя сегодня</p>
+      </div>
+      <div class="cod__inner">
+
+        <div class="cod__card-area">
+          <div class="cod__card" id="codCard">
+            <div class="cod__card-face cod__card-face--back">
+              <div class="cod__back-pattern">
+                <div class="cod__back-border"></div>
+                <div class="cod__back-center">
+                  <div class="cod__back-symbol">☽✦☾</div>
+                  <div class="cod__back-text">TAROT</div>
+                </div>
+              </div>
+            </div>
+            <div class="cod__card-face cod__card-face--front" id="codCardFront">
+              <!-- filled by JS -->
+            </div>
+          </div>
+          <button class="btn btn--outline cod__reveal-btn" id="revealBtn">
+            ✦ Открыть карту дня
+          </button>
+        </div>
+
+        <div class="cod__info" id="codInfo">
+          <div class="cod__info-placeholder">
+            <p class="cod__info-hint">Нажми на карту, чтобы узнать<br>послание сегодняшнего дня</p>
+            <div class="cod__info-hint-symbol">☽</div>
+          </div>
+          <div class="cod__info-content" id="codContent" style="display:none">
+            <div class="cod__arcana-label" id="codArcana"></div>
+            <h3 class="cod__card-name" id="codTitle"></h3>
+            <div class="cod__keywords" id="codKeywords"></div>
+            <p class="cod__meaning" id="codMeaning"></p>
+            <div class="cod__advice-block">
+              <span class="cod__advice-label">Совет дня</span>
+              <p class="cod__advice" id="codAdvice"></p>
+            </div>
+            <a href="#contact" class="btn btn--primary">Получить полный расклад</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Horoscope -->
+  <section class="horoscope section" id="horoscope">
+    <div class="container">
+      <div class="section__header">
+        <p class="section__tag">Таро-гороскоп</p>
+        <h2 class="section__title">Гороскоп на сегодня</h2>
+        <p class="section__subtitle">Выбери свой знак зодиака — узнай послание карт</p>
+      </div>
+
+      <div class="horoscope__signs" id="zodiacSigns">
+        <button class="zodiac-btn" data-sign="aries">
+          <span class="zodiac-btn__symbol">♈</span>
+          <span class="zodiac-btn__name">Овен</span>
+          <span class="zodiac-btn__dates">21.03 — 19.04</span>
+        </button>
+        <button class="zodiac-btn" data-sign="taurus">
+          <span class="zodiac-btn__symbol">♉</span>
+          <span class="zodiac-btn__name">Телец</span>
+          <span class="zodiac-btn__dates">20.04 — 20.05</span>
+        </button>
+        <button class="zodiac-btn" data-sign="gemini">
+          <span class="zodiac-btn__symbol">♊</span>
+          <span class="zodiac-btn__name">Близнецы</span>
+          <span class="zodiac-btn__dates">21.05 — 20.06</span>
+        </button>
+        <button class="zodiac-btn" data-sign="cancer">
+          <span class="zodiac-btn__symbol">♋</span>
+          <span class="zodiac-btn__name">Рак</span>
+          <span class="zodiac-btn__dates">21.06 — 22.07</span>
+        </button>
+        <button class="zodiac-btn" data-sign="leo">
+          <span class="zodiac-btn__symbol">♌</span>
+          <span class="zodiac-btn__name">Лев</span>
+          <span class="zodiac-btn__dates">23.07 — 22.08</span>
+        </button>
+        <button class="zodiac-btn" data-sign="virgo">
+          <span class="zodiac-btn__symbol">♍</span>
+          <span class="zodiac-btn__name">Дева</span>
+          <span class="zodiac-btn__dates">23.08 — 22.09</span>
+        </button>
+        <button class="zodiac-btn" data-sign="libra">
+          <span class="zodiac-btn__symbol">♎</span>
+          <span class="zodiac-btn__name">Весы</span>
+          <span class="zodiac-btn__dates">23.09 — 22.10</span>
+        </button>
+        <button class="zodiac-btn" data-sign="scorpio">
+          <span class="zodiac-btn__symbol">♏</span>
+          <span class="zodiac-btn__name">Скорпион</span>
+          <span class="zodiac-btn__dates">23.10 — 21.11</span>
+        </button>
+        <button class="zodiac-btn" data-sign="sagittarius">
+          <span class="zodiac-btn__symbol">♐</span>
+          <span class="zodiac-btn__name">Стрелец</span>
+          <span class="zodiac-btn__dates">22.11 — 21.12</span>
+        </button>
+        <button class="zodiac-btn" data-sign="capricorn">
+          <span class="zodiac-btn__symbol">♑</span>
+          <span class="zodiac-btn__name">Козерог</span>
+          <span class="zodiac-btn__dates">22.12 — 19.01</span>
+        </button>
+        <button class="zodiac-btn" data-sign="aquarius">
+          <span class="zodiac-btn__symbol">♒</span>
+          <span class="zodiac-btn__name">Водолей</span>
+          <span class="zodiac-btn__dates">20.01 — 18.02</span>
+        </button>
+        <button class="zodiac-btn" data-sign="pisces">
+          <span class="zodiac-btn__symbol">♓</span>
+          <span class="zodiac-btn__name">Рыбы</span>
+          <span class="zodiac-btn__dates">19.02 — 20.03</span>
+        </button>
+      </div>
+
+      <div class="horoscope__result" id="horoscopeResult" style="display:none">
+        <div class="horoscope__card">
+          <div class="horoscope__card-header">
+            <div class="horoscope__card-sign">
+              <span class="horoscope__card-symbol" id="hSymbol"></span>
+              <div>
+                <div class="horoscope__card-name" id="hName"></div>
+                <div class="horoscope__card-dates" id="hDates"></div>
+              </div>
+            </div>
+            <div class="horoscope__card-tarot">
+              <span class="horoscope__tarot-label">Карта знака</span>
+              <span class="horoscope__tarot-card" id="hTarotCard"></span>
+            </div>
+          </div>
+          <div class="horoscope__card-body">
+            <div class="horoscope__section">
+              <h4 class="horoscope__section-title">🌟 Общий прогноз</h4>
+              <p id="hGeneral"></p>
+            </div>
+            <div class="horoscope__section">
+              <h4 class="horoscope__section-title">💜 Любовь и отношения</h4>
+              <p id="hLove"></p>
+            </div>
+            <div class="horoscope__section">
+              <h4 class="horoscope__section-title">💼 Карьера и финансы</h4>
+              <p id="hCareer"></p>
+            </div>
+            <div class="horoscope__section">
+              <h4 class="horoscope__section-title">✦ Совет карт</h4>
+              <p class="horoscope__advice" id="hAdvice"></p>
+            </div>
+          </div>
+          <div class="horoscope__card-footer">
+            <a href="#contact" class="btn btn--primary">Получить личный расклад</a>
+          </div>
+        </div>
+      </div>
+
     </div>
   </section>
 
@@ -131,17 +294,24 @@
     <div class="container">
       <div class="section__header">
         <p class="section__tag">Услуги</p>
-        <h2 class="section__title">Что я предлагаю</h2>
+        <h2 class="section__title">Таро консультации</h2>
         <p class="section__subtitle">Выбери подходящий формат работы</p>
       </div>
       <div class="services__grid">
 
         <div class="service-card">
-          <div class="service-card__icon">🃏</div>
+          <div class="service-card__tarot-img">
+            <!-- Изображение карты Таро Уэйта -->
+            <div class="tarot-mini tarot-mini--fool">
+              <span class="tarot-mini__num">0</span>
+              <span class="tarot-mini__symbol">🃏</span>
+              <span class="tarot-mini__name">Дурак</span>
+            </div>
+          </div>
           <h3 class="service-card__title">Расклад на вопрос</h3>
-          <p class="service-card__desc">Ответ на конкретный вопрос: любовь, карьера, финансы, здоровье, отношения.</p>
+          <p class="service-card__desc">Ответ на конкретный вопрос: любовь, карьера, финансы, здоровье.</p>
           <ul class="service-card__list">
-            <li>3–5 карт</li>
+            <li>3–5 карт Таро Уэйта</li>
             <li>Письменная расшифровка</li>
             <li>До 30 минут</li>
           </ul>
@@ -151,9 +321,15 @@
 
         <div class="service-card service-card--featured">
           <div class="service-card__badge">Популярно</div>
-          <div class="service-card__icon">⭐</div>
+          <div class="service-card__tarot-img">
+            <div class="tarot-mini tarot-mini--priestess">
+              <span class="tarot-mini__num">II</span>
+              <span class="tarot-mini__symbol">🌙</span>
+              <span class="tarot-mini__name">Жрица</span>
+            </div>
+          </div>
           <h3 class="service-card__title">Полная консультация</h3>
-          <p class="service-card__desc">Глубокий анализ ситуации с несколькими раскладами и разбором по всем сферам жизни.</p>
+          <p class="service-card__desc">Глубокий анализ ситуации с несколькими раскладами по всем сферам жизни.</p>
           <ul class="service-card__list">
             <li>Несколько раскладов</li>
             <li>60–90 минут онлайн</li>
@@ -164,29 +340,22 @@
         </div>
 
         <div class="service-card">
-          <div class="service-card__icon">🌙</div>
+          <div class="service-card__tarot-img">
+            <div class="tarot-mini tarot-mini--wheel">
+              <span class="tarot-mini__num">X</span>
+              <span class="tarot-mini__symbol">☸</span>
+              <span class="tarot-mini__name">Колесо</span>
+            </div>
+          </div>
           <h3 class="service-card__title">Годовой прогноз</h3>
-          <p class="service-card__desc">Расклад на 12 месяцев: что ждёт в каждой сфере, ключевые периоды и рекомендации.</p>
+          <p class="service-card__desc">Расклад на 12 месяцев: ключевые периоды и рекомендации на весь год.</p>
           <ul class="service-card__list">
-            <li>Расклад на год</li>
+            <li>12 карт — 12 месяцев</li>
             <li>PDF-отчёт</li>
             <li>Поддержка 30 дней</li>
           </ul>
           <div class="service-card__price">от 5 000 ₽</div>
           <a href="#contact" class="btn btn--card">Заказать</a>
-        </div>
-
-        <div class="service-card">
-          <div class="service-card__icon">💫</div>
-          <h3 class="service-card__title">Обучение таро</h3>
-          <p class="service-card__desc">Индивидуальные уроки для тех, кто хочет научиться читать карты самостоятельно.</p>
-          <ul class="service-card__list">
-            <li>Индивидуальная программа</li>
-            <li>Практические задания</li>
-            <li>Сертификат</li>
-          </ul>
-          <div class="service-card__price">от 2 500 ₽/урок</div>
-          <a href="#contact" class="btn btn--card">Записаться</a>
         </div>
 
       </div>
@@ -198,38 +367,62 @@
     <div class="container">
       <div class="section__header">
         <p class="section__tag">Процесс</p>
-        <h2 class="section__title">Как это работает</h2>
+        <h2 class="section__title">Как проходит консультация</h2>
       </div>
-      <div class="how__steps">
-        <div class="how__step">
-          <div class="how__step-num">01</div>
-          <div class="how__step-content">
-            <h3>Запишись</h3>
-            <p>Оставь заявку через форму или напиши в мессенджер. Выберем удобное время.</p>
+      <div class="how__inner">
+        <div class="how__steps">
+          <div class="how__step">
+            <div class="how__step-line">
+              <div class="how__step-dot"></div>
+              <div class="how__step-connector"></div>
+            </div>
+            <div class="how__step-content">
+              <h3>Запись</h3>
+              <p>Оставь заявку через форму или напиши в Telegram. Выберем удобное время.</p>
+            </div>
+          </div>
+          <div class="how__step">
+            <div class="how__step-line">
+              <div class="how__step-dot"></div>
+              <div class="how__step-connector"></div>
+            </div>
+            <div class="how__step-content">
+              <h3>Формулировка запроса</h3>
+              <p>Расскажи о своей ситуации и вопросе. Чем точнее запрос — тем глубже расклад.</p>
+            </div>
+          </div>
+          <div class="how__step">
+            <div class="how__step-line">
+              <div class="how__step-dot"></div>
+              <div class="how__step-connector"></div>
+            </div>
+            <div class="how__step-content">
+              <h3>Расклад Таро Уэйта</h3>
+              <p>Провожу расклад с комментарием каждой карты. Детально разбираем послание.</p>
+            </div>
+          </div>
+          <div class="how__step">
+            <div class="how__step-line">
+              <div class="how__step-dot"></div>
+            </div>
+            <div class="how__step-content">
+              <h3>Ясность и действие</h3>
+              <p>Получаешь ответ и конкретные рекомендации. Ты знаешь, что делать дальше.</p>
+            </div>
           </div>
         </div>
-        <div class="how__arrow">→</div>
-        <div class="how__step">
-          <div class="how__step-num">02</div>
-          <div class="how__step-content">
-            <h3>Сформулируй запрос</h3>
-            <p>Расскажи о своей ситуации и вопросе. Чем точнее запрос — тем глубже расклад.</p>
-          </div>
-        </div>
-        <div class="how__arrow">→</div>
-        <div class="how__step">
-          <div class="how__step-num">03</div>
-          <div class="how__step-content">
-            <h3>Получи ответ</h3>
-            <p>Провожу расклад и детально разбираем карты. Отвечаю на все вопросы.</p>
-          </div>
-        </div>
-        <div class="how__arrow">→</div>
-        <div class="how__step">
-          <div class="how__step-num">04</div>
-          <div class="how__step-content">
-            <h3>Действуй</h3>
-            <p>Получаешь ясность и рекомендации. Ты знаешь, что делать дальше.</p>
+        <div class="how__image">
+          <div class="how__image-inner">
+            <div class="how__image-card">
+              <!-- Сюда можно добавить реальное фото сессии -->
+              <div class="how__image-placeholder">
+                <div class="how__cards-spread">
+                  <div class="spread-card spread-card--1">I</div>
+                  <div class="spread-card spread-card--2">VII</div>
+                  <div class="spread-card spread-card--3">XIV</div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -278,8 +471,8 @@
         <div class="review-card">
           <div class="review-card__stars">★★★★★</div>
           <p class="review-card__text">
-            "Прошла обучение таро у Макса. Очень структурированный подход, всё объясняет доступно.
-            Теперь сама читаю карты для себя и близких."
+            "Гороскоп по таро и личная консультация — это совершенно другой уровень. Карты показали
+            именно то, что я чувствовала, но не могла сформулировать."
           </p>
           <div class="review-card__author">
             <div class="review-card__avatar">М</div>
@@ -296,24 +489,42 @@
 
   <!-- Contact -->
   <section class="contact section" id="contact">
+    <div class="contact__mist"></div>
     <div class="container">
       <div class="contact__inner">
         <div class="contact__info">
-          <p class="section__tag">Контакт</p>
-          <h2 class="section__title">Запись<br>на консультацию</h2>
+          <p class="section__tag">Записаться</p>
+          <h2 class="section__title">Оставить заявку</h2>
           <p class="contact__desc">
-            Напиши мне — отвечу в течение пары часов.
+            Напиши мне — отвечу в течение нескольких часов.
             Обсудим твой запрос и подберём удобное время.
           </p>
           <div class="contact__links">
             <a href="https://t.me/maxtarott" class="contact__link" target="_blank" rel="noopener">
-              <span class="contact__link-icon">✈</span>
-              <span>Telegram: @maxtarott</span>
+              <div class="contact__link-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221l-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12l-6.871 4.326-2.962-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.833.941z"/>
+                </svg>
+              </div>
+              <div class="contact__link-text">
+                <span class="contact__link-label">Telegram</span>
+                <span class="contact__link-value">@maxtarott</span>
+              </div>
             </a>
-            <a href="https://instagram.com/maxtarott" class="contact__link" target="_blank" rel="noopener">
-              <span class="contact__link-icon">◈</span>
-              <span>Instagram: @maxtarott</span>
-            </a>
+          </div>
+          <div class="contact__decor">
+            <div class="contact__decor-card">
+              <div class="contact__decor-num">★</div>
+              <div class="contact__decor-text">Таро Уэйта</div>
+            </div>
+            <div class="contact__decor-card">
+              <div class="contact__decor-num">☽</div>
+              <div class="contact__decor-text">Лунный календарь</div>
+            </div>
+            <div class="contact__decor-card">
+              <div class="contact__decor-num">♈</div>
+              <div class="contact__decor-text">Зодиакальный гороскоп</div>
+            </div>
           </div>
         </div>
         <form class="contact__form" id="contactForm">
@@ -322,8 +533,8 @@
             <input class="form__input" type="text" id="name" name="name" placeholder="Как вас зовут?" required>
           </div>
           <div class="form__group">
-            <label class="form__label" for="contact-input">Telegram / WhatsApp / Email</label>
-            <input class="form__input" type="text" id="contact-input" name="contact" placeholder="Как с вами связаться?" required>
+            <label class="form__label" for="tg">Telegram / WhatsApp</label>
+            <input class="form__input" type="text" id="tg" name="tg" placeholder="@username или номер телефона" required>
           </div>
           <div class="form__group">
             <label class="form__label" for="service">Услуга</label>
@@ -332,7 +543,25 @@
               <option>Расклад на вопрос</option>
               <option>Полная консультация</option>
               <option>Годовой прогноз</option>
-              <option>Обучение таро</option>
+              <option>Таро-гороскоп</option>
+            </select>
+          </div>
+          <div class="form__group">
+            <label class="form__label" for="zodiac">Знак зодиака</label>
+            <select class="form__input form__select" id="zodiac" name="zodiac">
+              <option value="">Ваш знак зодиака (необязательно)</option>
+              <option>♈ Овен</option>
+              <option>♉ Телец</option>
+              <option>♊ Близнецы</option>
+              <option>♋ Рак</option>
+              <option>♌ Лев</option>
+              <option>♍ Дева</option>
+              <option>♎ Весы</option>
+              <option>♏ Скорпион</option>
+              <option>♐ Стрелец</option>
+              <option>♑ Козерог</option>
+              <option>♒ Водолей</option>
+              <option>♓ Рыбы</option>
             </select>
           </div>
           <div class="form__group">
@@ -357,8 +586,11 @@
         </div>
         <p class="footer__copy">© 2026 Maxtarott · Все права защищены</p>
         <div class="footer__social">
-          <a href="https://t.me/maxtarott" target="_blank" rel="noopener" class="footer__social-link">TG</a>
-          <a href="https://instagram.com/maxtarott" target="_blank" rel="noopener" class="footer__social-link">IG</a>
+          <a href="https://t.me/maxtarott" target="_blank" rel="noopener" class="footer__social-link" title="Telegram">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221l-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12l-6.871 4.326-2.962-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.833.941z"/>
+            </svg>
+          </a>
         </div>
       </div>
     </div>
