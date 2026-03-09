@@ -1,56 +1,286 @@
 'use strict';
 
 /* ===========================
+   Data: 22 Major Arcana (Tarot de Waite)
+   =========================== */
+const TAROT_CARDS = [
+  {
+    num: '0', numeral: 'АРКАН 0', name: 'Шут', emoji: '🃏',
+    keywords: ['Новое начало', 'Спонтанность', 'Свобода', 'Риск'],
+    meaning: 'Шут символизирует стоящего на пороге нового путешествия. Ты стоишь перед началом чего-то совершенно нового — будь открыт, доверяй интуиции и не бойся делать первый шаг в неизвестность.',
+    advice: 'Отпусти страх и контроль. Лучший момент для начала — прямо сейчас.'
+  },
+  {
+    num: 'I', numeral: 'АРКАН I', name: 'Маг', emoji: '✨',
+    keywords: ['Воля', 'Мастерство', 'Действие', 'Потенциал'],
+    meaning: 'Маг говорит: у тебя есть всё необходимое для достижения цели. Твои мысли, слова и действия обладают силой. Пришло время применить свои таланты и навыки.',
+    advice: 'Сосредоточь усилия на одной ключевой цели и действуй целенаправленно.'
+  },
+  {
+    num: 'II', numeral: 'АРКАН II', name: 'Верховная Жрица', emoji: '🌙',
+    keywords: ['Интуиция', 'Тайна', 'Подсознание', 'Мудрость'],
+    meaning: 'Верховная Жрица призывает прислушаться к внутреннему голосу. Не всё лежит на поверхности — ищи ответы в тишине и глубине своей интуиции. Время для размышления, а не действия.',
+    advice: 'Доверяй своим предчувствиям. Медитируй и слушай то, что говорит тебе тишина.'
+  },
+  {
+    num: 'III', numeral: 'АРКАН III', name: 'Императрица', emoji: '🌿',
+    keywords: ['Изобилие', 'Творчество', 'Плодородие', 'Природа'],
+    meaning: 'Императрица несёт послание изобилия и творческой силы. Пришло время расцвета, рождения новых идей и проектов. Позволь себе наслаждаться жизнью и создавать красоту.',
+    advice: 'Окружи себя природой и красотой. Твоё творческое начало принесёт плоды.'
+  },
+  {
+    num: 'IV', numeral: 'АРКАН IV', name: 'Император', emoji: '👑',
+    keywords: ['Власть', 'Структура', 'Авторитет', 'Стабильность'],
+    meaning: 'Император призывает взять ответственность и установить порядок. Создай структуру там, где её нет. Твёрдость, логика и дисциплина — твои инструменты сегодня.',
+    advice: 'Прими решение и стой на своём. Дисциплина сейчас даст свободу потом.'
+  },
+  {
+    num: 'V', numeral: 'АРКАН V', name: 'Иерофант', emoji: '⛪',
+    keywords: ['Традиция', 'Обучение', 'Вера', 'Наставник'],
+    meaning: 'Иерофант указывает на ценность традиций, духовного наставничества и проверенных путей. Возможно, тебе нужен учитель или ментор. Или ты сам можешь стать таковым.',
+    advice: 'Обратись за советом к тому, кто прошёл этот путь до тебя. Мудрость в традиции.'
+  },
+  {
+    num: 'VI', numeral: 'АРКАН VI', name: 'Влюблённые', emoji: '💕',
+    keywords: ['Выбор', 'Любовь', 'Союз', 'Ценности'],
+    meaning: 'Карта Влюблённых говорит о важном выборе, который стоит перед тобой. Это не только о романтике — о слиянии с тем, что тебе по-настоящему важно. Следуй зову сердца.',
+    advice: 'Сделай выбор, который соответствует твоим глубинным ценностям, а не страху.'
+  },
+  {
+    num: 'VII', numeral: 'АРКАН VII', name: 'Колесница', emoji: '⚡',
+    keywords: ['Победа', 'Воля', 'Контроль', 'Движение'],
+    meaning: 'Колесница — знак триумфа через силу воли и концентрацию. Ты способен преодолеть препятствия, если направишь все противоречивые силы в одну сторону. Скорость и решимость — твои союзники.',
+    advice: 'Держи фокус, не позволяй сомнениям тебя останавливать. Победа уже близко.'
+  },
+  {
+    num: 'VIII', numeral: 'АРКАН VIII', name: 'Сила', emoji: '🦁',
+    keywords: ['Внутренняя сила', 'Терпение', 'Сострадание', 'Смелость'],
+    meaning: 'Карта Силы напоминает: истинная мощь — не в агрессии, а в мягкой уверенности. Приручи своих внутренних "зверей" — страхи, гнев, сомнения — с любовью и терпением.',
+    advice: 'Действуй из места внутреннего спокойствия. Нежность — это тоже сила.'
+  },
+  {
+    num: 'IX', numeral: 'АРКАН IX', name: 'Отшельник', emoji: '🏔️',
+    keywords: ['Уединение', 'Поиск', 'Мудрость', 'Путь внутрь'],
+    meaning: 'Отшельник зовёт на путь вглубь себя. Период одиночества и размышления — не наказание, а подарок. В тишине ты найдёшь то, чего искал снаружи. Доверяй своему внутреннему свету.',
+    advice: 'Уединись хотя бы на час. Ответы уже есть внутри тебя — им нужна тишина.'
+  },
+  {
+    num: 'X', numeral: 'АРКАН X', name: 'Колесо Фортуны', emoji: '☸️',
+    keywords: ['Перемены', 'Судьба', 'Циклы', 'Удача'],
+    meaning: 'Колесо Фортуны напоминает о вечном движении жизни. Всё меняется — плохое проходит, хорошее возвращается. Ты находишься в переломной точке цикла. Прими перемены с доверием.',
+    advice: 'Отпусти то, что уже отжило. Новый цикл принесёт то, о чём ты мечтал.'
+  },
+  {
+    num: 'XI', numeral: 'АРКАН XI', name: 'Справедливость', emoji: '⚖️',
+    keywords: ['Баланс', 'Правда', 'Причина и следствие', 'Честность'],
+    meaning: 'Справедливость говорит о необходимости честности — прежде всего с самим собой. Твои решения и действия имеют последствия. Пришло время расставить всё по своим местам.',
+    advice: 'Поступай по совести. Правда освобождает, даже когда она неудобна.'
+  },
+  {
+    num: 'XII', numeral: 'АРКАН XII', name: 'Повешенный', emoji: '🔄',
+    keywords: ['Пауза', 'Жертва', 'Новый взгляд', 'Принятие'],
+    meaning: 'Повешенный не страдает — он добровольно выбирает паузу, чтобы увидеть ситуацию с другой стороны. Иногда нужно остановиться, отпустить контроль и посмотреть на всё с иного угла.',
+    advice: 'Не форсируй события. Сделай паузу и позволь ситуации раскрыться самой.'
+  },
+  {
+    num: 'XIII', numeral: 'АРКАН XIII', name: 'Смерть', emoji: '🦋',
+    keywords: ['Трансформация', 'Конец', 'Перерождение', 'Перемены'],
+    meaning: 'Карта Смерти в таро — это не физическая смерть, а мощная трансформация. Что-то важное подходит к концу, освобождая место для нового. Не цепляйся за прошлое — отпусти с благодарностью.',
+    advice: 'Позволь старому уйти. Только освободив место, ты откроешь путь для нового.'
+  },
+  {
+    num: 'XIV', numeral: 'АРКАН XIV', name: 'Умеренность', emoji: '🌊',
+    keywords: ['Баланс', 'Гармония', 'Терпение', 'Синтез'],
+    meaning: 'Умеренность призывает к балансу и терпению. Лучшие результаты достигаются не через крайности, а через гармоничное слияние противоположностей. Доверяй медленному, но верному процессу.',
+    advice: 'Ищи золотую середину. Не торопи события — всё идёт в нужном темпе.'
+  },
+  {
+    num: 'XV', numeral: 'АРКАН XV', name: 'Дьявол', emoji: '⛓️',
+    keywords: ['Зависимость', 'Теневая сторона', 'Соблазн', 'Освобождение'],
+    meaning: 'Дьявол показывает, чем или кем ты чувствуешь себя привязанным. Но цепи на картинке не заперты — ты можешь освободиться. Осознай, что тебя держит, и у тебя появится выбор.',
+    advice: 'Назови своих демонов по имени. Осознание — первый шаг к свободе.'
+  },
+  {
+    num: 'XVI', numeral: 'АРКАН XVI', name: 'Башня', emoji: '🌩️',
+    keywords: ['Разрушение', 'Откровение', 'Потрясение', 'Очищение'],
+    meaning: 'Башня — резкое, но необходимое разрушение старых структур. То, что казалось незыблемым, рассыпается, открывая правду. Это болезненно, но именно это освобождает место для истинного.',
+    advice: 'Не противься переменам. Разрушение ведёт к более прочному фундаменту.'
+  },
+  {
+    num: 'XVII', numeral: 'АРКАН XVII', name: 'Звезда', emoji: '⭐',
+    keywords: ['Надежда', 'Исцеление', 'Вдохновение', 'Возрождение'],
+    meaning: 'После потрясений Башни приходит Звезда с её спокойным светом надежды. Это время исцеления, восстановления веры в себя и будущее. Твой путь освещён — иди за своей звездой.',
+    advice: 'Позволь себе мечтать. Вдохновение — это компас, который ведёт к твоей судьбе.'
+  },
+  {
+    num: 'XVIII', numeral: 'АРКАН XVIII', name: 'Луна', emoji: '🌕',
+    keywords: ['Иллюзия', 'Подсознание', 'Страх', 'Интуиция'],
+    meaning: 'Луна погружает в мир снов, страхов и иллюзий. Не всё, что кажется, является правдой. Прислушайся к снам и интуиции, но проверяй факты. Пройди через туман — за ним ясность.',
+    advice: 'Не принимай решений в тумане страха. Подожди, пока ситуация прояснится.'
+  },
+  {
+    num: 'XIX', numeral: 'АРКАН XIX', name: 'Солнце', emoji: '☀️',
+    keywords: ['Радость', 'Успех', 'Ясность', 'Жизненная сила'],
+    meaning: 'Солнце — одна из самых благоприятных карт. Она несёт свет, радость и успех. Сегодня твой день сиять. Позволь себе быть счастливым без условий и оговорок.',
+    advice: 'Позволь себе радоваться. Ты заслуживаешь тепла и счастья прямо сейчас.'
+  },
+  {
+    num: 'XX', numeral: 'АРКАН XX', name: 'Суд', emoji: '🎺',
+    keywords: ['Пробуждение', 'Прощение', 'Призвание', 'Второй шанс'],
+    meaning: 'Карта Суда — это зов пробудиться. Время переосмыслить прошлое, простить себя и других, и откликнуться на зов своего истинного призвания. Ты получаешь второй шанс.',
+    advice: 'Прости — себя и других. Только освободившись от груза прошлого, можно лететь.'
+  },
+  {
+    num: 'XXI', numeral: 'АРКАН XXI', name: 'Мир', emoji: '🌍',
+    keywords: ['Завершение', 'Интеграция', 'Триумф', 'Целостность'],
+    meaning: 'Мир — высший аркан, символ завершённости и интеграции. Цикл завершён, ты достиг чего-то важного. Признай свой путь, отпразднуй достижения и готовься к новому витку спирали жизни.',
+    advice: 'Признай, как далеко ты прошёл. Ты заслуживаешь этого момента торжества.'
+  }
+];
+
+/* ===========================
+   Data: Zodiac Horoscopes
+   =========================== */
+const ZODIAC_DATA = {
+  aries: {
+    name: 'Овен', symbol: '♈', dates: '21.03 — 19.04',
+    tarotCard: 'Император (IV)',
+    general: 'Марс наполняет тебя энергией и решимостью. Сегодня благоприятный день для смелых шагов и инициатив. Карты указывают на то, что отложенное решение требует ответа именно сейчас.',
+    love: 'В отношениях важно сохранить баланс между страстью и нежностью. Партнёру нужна не только твоя сила, но и теплота. Одиноким Овнам карты обещают неожиданную встречу.',
+    career: 'Твои профессиональные усилия замечены. Не упусти возможность заявить о себе — она появится неожиданно. Финансовый поток улучшается, но избегай импульсивных трат.',
+    advice: '"Действуй, но прежде — подумай. Твоя сила в сочетании огня и мудрости."'
+  },
+  taurus: {
+    name: 'Телец', symbol: '♉', dates: '20.04 — 20.05',
+    tarotCard: 'Иерофант (V)',
+    general: 'Венера благоволит тебе. День наполнен возможностями для укрепления того, что уже есть. Карты говорят о важности терпения — плоды твоего труда созревают.',
+    love: 'Стабильность и надёжность — твои главные козыри в любви. Покажи партнёру, что он может на тебя положиться. В отношениях назревает важный разговор.',
+    career: 'Твой практический подход приносит результаты. Сегодня хорошее время для финансовых решений и долгосрочных вложений. Доверяй проверенным стратегиям.',
+    advice: '"Твоя сила — в постоянстве. Продолжай идти своим путём, не оглядываясь."'
+  },
+  gemini: {
+    name: 'Близнецы', symbol: '♊', dates: '21.05 — 20.06',
+    tarotCard: 'Влюблённые (VI)',
+    general: 'Меркурий ускоряет мысли и коммуникации. Информации много — учись фильтровать. Карты указывают на важный выбор, который нельзя откладывать в долгий ящик.',
+    love: 'Твоя искромётность и юмор привлекают внимание. В отношениях важно слушать не только себя. Одиноким Близнецам — обрати внимание на человека из окружения.',
+    career: 'Идеи льются рекой — запиши всё. Коммуникации, переговоры, презентации пройдут успешно. Избегай распыления: выбери одну приоритетную задачу.',
+    advice: '"Используй силу слова мудро. Одно точное высказывание ценнее тысячи слов."'
+  },
+  cancer: {
+    name: 'Рак', symbol: '♋', dates: '21.06 — 22.07',
+    tarotCard: 'Колесница (VII)',
+    general: 'Луна усиливает твою интуицию. Прислушивайся к ощущениям — они не подведут. Карты говорят об эмоциональном периоде, который требует бережного отношения к себе.',
+    love: 'Твоя нежность и забота создают тёплое поле в отношениях. Важно также принимать любовь, а не только давать её. Открой сердце для того, кто хочет о тебе позаботиться.',
+    career: 'Интуиция подскажет верное решение в рабочих вопросах. Командная работа принесёт лучший результат. Не замыкайся в себе — поделись идеями.',
+    advice: '"Твоя чувствительность — дар, а не слабость. Она ведёт тебя верным путём."'
+  },
+  leo: {
+    name: 'Лев', symbol: '♌', dates: '23.07 — 22.08',
+    tarotCard: 'Сила (VIII)',
+    general: 'Солнце в твоём знаке добавляет харизмы и уверенности. День создан для того, чтобы сиять. Карты говорят о признании и достижении — ты на верном пути.',
+    love: 'Твоя щедрость и страстность делают тебя магнитом для любви. Будь чуть более гибким — не каждая сцена нужна. Партнёр оценит твою великодушие.',
+    career: 'Лидерские качества выходят на первый план. Пришло время взять на себя ответственность и делегировать. Твоё имя сейчас на слуху в профессиональном окружении.',
+    advice: '"Настоящий лидер поднимает других, а не возвышается над ними."'
+  },
+  virgo: {
+    name: 'Дева', symbol: '♍', dates: '23.08 — 22.09',
+    tarotCard: 'Отшельник (IX)',
+    general: 'Меркурий обостряет аналитический ум. День благоприятен для планирования, систематизации и завершения незаконченных дел. Карты говорят о мудром уединении как источнике силы.',
+    love: 'Твоя внимательность к деталям дарит партнёру ощущение заботы. Но перестань искать изъяны — учись видеть красоту несовершенства. Это путь к настоящей близости.',
+    career: 'Твой профессионализм заметен. Детальный анализ принесёт прорыв в сложном вопросе. Здоровье — позаботься о нём, не откладывай профилактику.',
+    advice: '"Совершенство — враг хорошего. Позволь себе действовать несмотря на несовершенство."'
+  },
+  libra: {
+    name: 'Весы', symbol: '♎', dates: '23.09 — 22.10',
+    tarotCard: 'Справедливость (XI)',
+    general: 'Венера наполняет день гармонией и эстетикой. Время для важных переговоров и дипломатических решений. Карты указывают: баланс, к которому ты стремишься, достижим.',
+    love: 'Твоя способность видеть обе стороны делает тебя идеальным партнёром. Однако пора принять важное решение в отношениях. Промедление тоже является выбором.',
+    career: 'Партнёрство и коллаборации принесут лучший результат, чем одиночная работа. Договоры, контракты — благоприятное время для их заключения. Доверяй своему чувству справедливости.',
+    advice: '"Не жди идеального момента для решения. Решай — и момент станет идеальным."'
+  },
+  scorpio: {
+    name: 'Скорпион', symbol: '♏', dates: '23.10 — 21.11',
+    tarotCard: 'Смерть (XIII)',
+    general: 'Плутон усиливает трансформирующую силу. Что-то важное подходит к концу, открывая путь к чему-то значительно лучшему. Карты говорят о глубоком внутреннем обновлении.',
+    love: 'Твоя интенсивность привлекает и пугает одновременно. Позволь уязвимости — это твоя настоящая суперсила в любви. Откроешь сердце — откроются двери к настоящей близости.',
+    career: 'Твоя способность видеть скрытое даёт преимущество. Исследование, анализ, раскрытие тайн — в этих сферах ты сегодня непобедим. Финансовые дела требуют тщательной проверки.',
+    advice: '"Из глубин поднимается самое ценное. Не бойся своей глубины."'
+  },
+  sagittarius: {
+    name: 'Стрелец', symbol: '♐', dates: '22.11 — 21.12',
+    tarotCard: 'Колесо Фортуны (X)',
+    general: 'Юпитер расширяет горизонты. День благоприятен для обучения, путешествий и философских размышлений. Карты говорят о большой удаче — будь открыт для неожиданных возможностей.',
+    love: 'Свобода и приключения делают тебя невероятно привлекательным. Партнёру нужно больше конкретности и стабильности от тебя — найди баланс. Одиноким — удача сопутствует смелым.',
+    career: 'Амбициозные цели сейчас достижимы. Международные связи, новые рынки, обучение — всё это принесёт плоды. Не ограничивай масштаб своего мышления.',
+    advice: '"Твоя стрела летит туда, куда направлен взгляд. Смотри на цель, а не на препятствия."'
+  },
+  capricorn: {
+    name: 'Козерог', symbol: '♑', dates: '22.12 — 19.01',
+    tarotCard: 'Дьявол (XV)',
+    general: 'Сатурн укрепляет твою решимость. День требует структуры и дисциплины — именно это приведёт к цели. Карты говорят о освобождении от ограничивающих убеждений.',
+    love: 'Твоя надёжность и преданность — фундамент крепких отношений. Однако разреши себе чуть больше спонтанности и игривости. Партнёру нужен не только надёжный партнёр, но и друг.',
+    career: 'Долгосрочные планы созревают. Признание профессиональных заслуг не за горами. Будь готов взять на себя большую ответственность — ты справишься.',
+    advice: '"Медленный подъём даёт самую прочную вершину. Продолжай карабкаться."'
+  },
+  aquarius: {
+    name: 'Водолей', symbol: '♒', dates: '20.01 — 18.02',
+    tarotCard: 'Звезда (XVII)',
+    general: 'Уран приносит неожиданные озарения. Твои нестандартные идеи сейчас особенно ценны — не прячь их. Карты говорят о вдохновении и о том, что ты можешь изменить многое вокруг.',
+    love: 'Ты привлекаешь людей своей неординарностью. В отношениях важно сохранить индивидуальность, не растворяясь в партнёре. Настоящая любовь даёт свободу, а не ограничивает.',
+    career: 'Инновации, технологии, нестандартные решения — твоя территория. Коллектив нуждается в твоём видении. Не бойся предлагать идеи, которые кажутся слишком революционными.',
+    advice: '"Будущее создаётся теми, кто умеет его представить. Ты — один из них."'
+  },
+  pisces: {
+    name: 'Рыбы', symbol: '♓', dates: '19.02 — 20.03',
+    tarotCard: 'Луна (XVIII)',
+    general: 'Нептун усиливает интуицию и творческое воображение. День благоприятен для искусства, медитации и духовных практик. Карты говорят о важных посланиях из подсознания — прислушайся к снам.',
+    love: 'Твоя эмпатия и романтизм создают волшебную атмосферу в отношениях. Следи за тем, чтобы не идеализировать партнёра. Позволь ему быть живым человеком, а не мечтой.',
+    career: 'Творческие и целительские профессии сегодня в фаворе. Помогай другим — это возвращается сторицей. Избегай размытых договорённостей — фиксируй договорённости письменно.',
+    advice: '"Твоя чувствительность — это дар провидца. Доверяй тому, что чувствуешь."'
+  }
+};
+
+/* ===========================
    Stars background
    =========================== */
 (function createStars() {
   const container = document.getElementById('stars');
   if (!container) return;
 
-  const count = 120;
-  const fragment = document.createDocumentFragment();
-
-  for (let i = 0; i < count; i++) {
-    const star = document.createElement('div');
-    const size = Math.random() * 2.5 + 0.5;
-    const x = Math.random() * 100;
-    const y = Math.random() * 100;
-    const delay = Math.random() * 4;
-    const duration = Math.random() * 3 + 2;
-
-    star.style.cssText = `
-      position: absolute;
-      left: ${x}%;
-      top: ${y}%;
-      width: ${size}px;
-      height: ${size}px;
-      background: white;
-      border-radius: 50%;
-      opacity: ${Math.random() * 0.7 + 0.1};
-      animation: twinkle ${duration}s ${delay}s ease-in-out infinite alternate;
-    `;
-    fragment.appendChild(star);
-  }
-
-  container.appendChild(fragment);
-
   const style = document.createElement('style');
   style.textContent = `
     @keyframes twinkle {
-      from { opacity: 0.1; transform: scale(1); }
-      to   { opacity: 0.8; transform: scale(1.3); }
+      from { opacity: 0.1; transform: scale(0.8); }
+      to   { opacity: 0.9; transform: scale(1.2); }
     }
   `;
   document.head.appendChild(style);
+
+  const fragment = document.createDocumentFragment();
+  for (let i = 0; i < 140; i++) {
+    const star = document.createElement('div');
+    const size = Math.random() * 2.4 + 0.4;
+    star.style.cssText = `
+      position:absolute;
+      left:${Math.random() * 100}%;
+      top:${Math.random() * 100}%;
+      width:${size}px;height:${size}px;
+      background:${Math.random() > 0.7 ? '#DFB6B2' : '#FBE4D8'};
+      border-radius:50%;
+      opacity:${Math.random() * 0.6 + 0.1};
+      animation:twinkle ${Math.random() * 3 + 2}s ${Math.random() * 4}s ease-in-out infinite alternate;
+    `;
+    fragment.appendChild(star);
+  }
+  container.appendChild(fragment);
 })();
 
 /* ===========================
-   Header scroll effect
+   Header scroll
    =========================== */
 (function headerScroll() {
   const header = document.getElementById('header');
   if (!header) return;
-
   let ticking = false;
   window.addEventListener('scroll', () => {
     if (!ticking) {
@@ -64,7 +294,7 @@
 })();
 
 /* ===========================
-   Burger / mobile nav
+   Mobile nav
    =========================== */
 (function mobileNav() {
   const burger = document.getElementById('burger');
@@ -76,8 +306,6 @@
     nav.classList.toggle('open');
     document.body.style.overflow = nav.classList.contains('open') ? 'hidden' : '';
   });
-
-  // Close on nav link click
   nav.querySelectorAll('.nav__link').forEach(link => {
     link.addEventListener('click', () => {
       burger.classList.remove('active');
@@ -88,39 +316,135 @@
 })();
 
 /* ===========================
-   Scroll fade-in animation
+   Card of the Day
    =========================== */
-(function scrollReveal() {
-  const selectors = [
-    '.service-card',
-    '.review-card',
-    '.how__step',
-    '.about__content',
-    '.about__image',
-    '.contact__info',
-    '.contact__form',
-    '.section__header',
-  ];
+(function cardOfDay() {
+  const btn = document.getElementById('revealBtn');
+  const card = document.getElementById('codCard');
+  const front = document.getElementById('codCardFront');
+  const infoPlaceholder = document.querySelector('.cod__info-placeholder');
+  const infoContent = document.getElementById('codContent');
 
-  const elements = document.querySelectorAll(selectors.join(', '));
-  elements.forEach(el => el.classList.add('fade-in'));
+  if (!btn || !card) return;
 
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry, idx) => {
-      if (entry.isIntersecting) {
-        setTimeout(() => {
-          entry.target.classList.add('visible');
-        }, idx * 80);
-        observer.unobserve(entry.target);
+  // Seed by date so card is same all day
+  const today = new Date();
+  const seed = today.getFullYear() * 10000 + (today.getMonth() + 1) * 100 + today.getDate();
+  const idx = seed % TAROT_CARDS.length;
+  const c = TAROT_CARDS[idx];
+
+  // Fill front face
+  front.innerHTML = `
+    <div class="cod__card-front-num">${c.numeral}</div>
+    <div class="cod__card-front-art">
+      <span class="cod__card-front-emoji">${c.emoji}</span>
+    </div>
+    <div class="cod__card-front-name">${c.name}</div>
+  `;
+
+  let revealed = false;
+
+  function reveal() {
+    if (revealed) return;
+    revealed = true;
+
+    card.classList.add('flipped');
+    btn.textContent = '✦ Карта открыта';
+    btn.disabled = true;
+    btn.style.opacity = '0.5';
+
+    setTimeout(() => {
+      if (infoPlaceholder) infoPlaceholder.style.display = 'none';
+      if (infoContent) {
+        infoContent.style.display = 'flex';
+
+        document.getElementById('codArcana').textContent = c.numeral;
+        document.getElementById('codTitle').textContent = c.name;
+
+        const kwEl = document.getElementById('codKeywords');
+        kwEl.innerHTML = c.keywords.map(k =>
+          `<span class="cod__keyword">${k}</span>`
+        ).join('');
+
+        document.getElementById('codMeaning').textContent = c.meaning;
+        document.getElementById('codAdvice').textContent = c.advice;
+
+        infoContent.style.animation = 'fadeUp 0.5s ease';
       }
-    });
-  }, { threshold: 0.12 });
+    }, 500);
+  }
 
-  elements.forEach(el => observer.observe(el));
+  btn.addEventListener('click', reveal);
+  card.addEventListener('click', reveal);
 })();
 
 /* ===========================
-   Contact form (stub)
+   Horoscope
+   =========================== */
+(function horoscope() {
+  const btns = document.querySelectorAll('.zodiac-btn');
+  const result = document.getElementById('horoscopeResult');
+  if (!btns.length || !result) return;
+
+  btns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      btns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+
+      const sign = btn.dataset.sign;
+      const d = ZODIAC_DATA[sign];
+      if (!d) return;
+
+      document.getElementById('hSymbol').textContent = d.symbol;
+      document.getElementById('hName').textContent = d.name;
+      document.getElementById('hDates').textContent = d.dates;
+      document.getElementById('hTarotCard').textContent = d.tarotCard;
+      document.getElementById('hGeneral').textContent = d.general;
+      document.getElementById('hLove').textContent = d.love;
+      document.getElementById('hCareer').textContent = d.career;
+      document.getElementById('hAdvice').textContent = d.advice;
+
+      result.style.display = 'block';
+      result.style.animation = 'none';
+      result.offsetHeight; // reflow
+      result.style.animation = 'fadeUp 0.5s ease';
+
+      // Scroll to result
+      setTimeout(() => {
+        result.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      }, 100);
+    });
+  });
+})();
+
+/* ===========================
+   Scroll fade-in
+   =========================== */
+(function scrollReveal() {
+  const els = document.querySelectorAll([
+    '.service-card', '.review-card', '.how__step',
+    '.about__content', '.about__image',
+    '.contact__info', '.contact__form',
+    '.section__header', '.cod__card-area', '.cod__info',
+    '.horoscope__signs'
+  ].join(', '));
+
+  els.forEach(el => el.classList.add('fade-in'));
+
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('visible'), i * 80);
+        obs.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+
+  els.forEach(el => obs.observe(el));
+})();
+
+/* ===========================
+   Contact form
    =========================== */
 (function contactForm() {
   const form = document.getElementById('contactForm');
@@ -128,34 +452,28 @@
 
   form.addEventListener('submit', (e) => {
     e.preventDefault();
-
     const btn = form.querySelector('[type="submit"]');
     const original = btn.textContent;
-
-    btn.textContent = 'Отправлено ✓';
+    btn.textContent = '✓ Заявка отправлена';
     btn.disabled = true;
     btn.style.background = 'linear-gradient(135deg, #4caf82, #2e8b57)';
-
-    // Reset after 3s
     setTimeout(() => {
       btn.textContent = original;
       btn.disabled = false;
       btn.style.background = '';
       form.reset();
-    }, 3000);
+    }, 3500);
   });
 })();
 
 /* ===========================
-   Smooth scroll for anchors
+   Smooth scroll
    =========================== */
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-  anchor.addEventListener('click', (e) => {
-    const target = document.querySelector(anchor.getAttribute('href'));
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    const target = document.querySelector(a.getAttribute('href'));
     if (!target) return;
     e.preventDefault();
-    const offset = 80;
-    const top = target.getBoundingClientRect().top + window.scrollY - offset;
-    window.scrollTo({ top, behavior: 'smooth' });
+    window.scrollTo({ top: target.getBoundingClientRect().top + window.scrollY - 80, behavior: 'smooth' });
   });
 });
